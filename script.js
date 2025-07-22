@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statusDiv = document.getElementById('status');
     const downloadLink = document.getElementById('downloadLink');
 
-    // این آدرس باید به Worker کلودفلر شما اشاره کند
+    // آدرس تغییر نمی‌کند و همچنان ریشه اصلی است
     const WORKER_URL = '/';
 
     generateBtn.addEventListener('click', async () => {
@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
         updateStatus('در حال آپلود و پردازش... (این فرآیند ممکن است چند دقیقه طول بکشد)', '#ccc');
 
         try {
-            // فایل صوتی را مستقیماً به Worker ارسال می‌کنیم
+            // فایل صوتی را مستقیماً به دامنه اصلی ارسال می‌کنیم
+            // اتصال مستقیم ورکر که در تنظیمات انجام دادی، این درخواست را مدیریت می‌کند
             const response = await fetch(WORKER_URL, {
                 method: 'POST',
                 headers: {
